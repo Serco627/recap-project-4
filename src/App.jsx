@@ -3,10 +3,12 @@ import { initialColors } from "./lib/colors";
 import Color from "./Components/Color/Color";
 import ColorForm from "./Components/ColorForm";
 import "./App.css";
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
-  const [colors, setColors] = useState(initialColors);
-
+  const [colors, setColors] = useLocalStorageState("colors", {
+    defaultValue: initialColors,
+  });
   // Funktion zum Hinzufügen einer neuen Farbe
   function addColor(newColor) {
     setColors([newColor, ...colors]); // Neue Farbe oben hinzufügen
