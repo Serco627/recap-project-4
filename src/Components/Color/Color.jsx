@@ -2,10 +2,16 @@ import { useState } from "react";
 import "./Color.css";
 
 export default function Color({ color, onDeleteColor }) {
-  const [deleteColor, setDeleteColor] = useState("false");
+  const [showConfirm, setShowConfirm] = useState(false);
 
-  function handleToggleDelete() {
-    setDeleteColor(!deleteColor);
+  // Funktion zum Umschalten der Bestätigungsnachricht
+  function handleToggleConfirm() {
+    setShowConfirm(!showConfirm);
+  }
+
+  // Funktion zum Bestätigen des Löschvorgangs
+  function handleDelete() {
+    onDeleteColor(color.id);
   }
 
   return (
@@ -19,15 +25,15 @@ export default function Color({ color, onDeleteColor }) {
       <h3 className="color-card-headline">{color.hex}</h3>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
-      {deleteColor ? (
-        <button onClick={handleToggleDelete}>DELETE</button>
-      ) : null}
-      {deleteColor ? null : (
+
+      {showConfirm ? (
         <>
           <p className="color-card-highlight">Really delete?</p>
-          <button onClick={handleToggleDelete}>CANCEL</button>
-          <button onClick={() => onDeleteColor(color.id)}>DELETE</button>
+          <button onClick={handleToggleConfirm}>CANCEL</button>
+          <button onClick={handleDelete}>DELETE</button>
         </>
+      ) : (
+        <button onClick={handleToggleConfirm}>DELETE</button>
       )}
     </div>
   );
