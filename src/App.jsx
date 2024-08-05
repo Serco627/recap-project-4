@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { initialColors } from "./lib/colors";
 import Color from "./Components/Color/Color";
 import ColorForm from "./Components/ColorForm";

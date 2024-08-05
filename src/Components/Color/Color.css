@@ -16,3 +16,12 @@
   background-color: black;
   color: white;
 }
+
+.color-form {
+  padding: 10px;
+  background-color: whitesmoke;
+  box-shadow: grey 0px 2px 8px;
+  margin-bottom: 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
