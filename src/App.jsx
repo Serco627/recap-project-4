@@ -7,12 +7,22 @@ import "./App.css";
 function App() {
   const [colors, setColors] = useState(initialColors);
 
+  // Funktion zum Hinzufügen einer neuen Farbe
   function addColor(newColor) {
-    setColors([newColor, ...colors]); // Add new color to the top
+    setColors([newColor, ...colors]); // Neue Farbe oben hinzufügen
   }
 
+  // Funktion zum Löschen einer Farbe
   function deleteColor(id) {
     const updatedColors = colors.filter((color) => color.id !== id);
+    setColors(updatedColors);
+  }
+
+  // Funktion zum Bearbeiten einer Farbe
+  function editColor(id, updatedData) {
+    const updatedColors = colors.map((color) =>
+      color.id === id ? { ...color, ...updatedData } : color
+    );
     setColors(updatedColors);
   }
 
@@ -20,14 +30,19 @@ function App() {
     <>
       <h1>Theme Creator</h1>
 
-      <ColorForm onSubmitColor={addColor} />
+      <ColorForm onSubmitColor={addColor} buttonLabel="Add Color" />
 
       {colors.length > 0 ? (
         colors.map((color) => (
-          <Color key={color.id} color={color} onDeleteColor={deleteColor} />
+          <Color
+            key={color.id}
+            color={color}
+            onDeleteColor={deleteColor}
+            onEditColor={editColor} // Weitergabe der editColor-Funktion
+          />
         ))
       ) : (
-        <p>No colors.. start by adding one!</p>
+        <p>No colors... start by adding one!</p>
       )}
     </>
   );
