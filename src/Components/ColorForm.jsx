@@ -47,8 +47,6 @@ export default function ColorForm({
       <br />
       <br />
       <button type="submit">{buttonLabel}</button>
-      <br />
-      <br />
     </form>
   );
 }
