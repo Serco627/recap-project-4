@@ -35,6 +35,7 @@
   margin-bottom: 10px;
   border: 1px solid grey;
   border-radius: 10px;
+  position: relative;
 }
 
 .header {
@@ -57,4 +58,8 @@ button {
 button:hover {
   cursor: pointer;
   background-color: rgb(199, 197, 197);
+}
+
+input[type="color"] {
+  margin-left: 5px;
 }

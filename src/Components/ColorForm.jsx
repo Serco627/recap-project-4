@@ -12,7 +12,10 @@ export default function ColorForm({
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    data.id = initialData.id || nanoid();
+    // ID nur generieren, wenn sie nicht existiert (bei neuer Farbe)
+    if (!data.id) {
+      data.id = nanoid();
+    }
 
     onSubmitColor(data);
     event.target.elements.role.focus();
@@ -20,6 +23,13 @@ export default function ColorForm({
 
   return (
     <form className="color-form" onSubmit={handleSubmit}>
+      <p className="description">
+        <strong>Create or Edit a Color: </strong>
+        Fill in the details to add a new color or update an existing one.
+        Specify the color’s role, hex value, and contrast text to customize your
+        color theme.
+      </p>
+      <br />
       <label htmlFor="role">
         Role:
         <br />
@@ -34,17 +44,13 @@ export default function ColorForm({
       <label htmlFor="hex">
         Hex:
         <br />
-        <ColorInput id="hex" name="hex" defaultValue={initialData.hex} />
+        <ColorInput id="hex" defaultValue={initialData.hex} />
       </label>
       <br />
       <label htmlFor="contrastText">
         Contrast Text:
         <br />
-        <ColorInput
-          id="contrastText"
-          name="contrastText"
-          defaultValue={initialData.contrastText}
-        />
+        <ColorInput id="contrastText" defaultValue={initialData.contrastText} />
       </label>
       <br />
       <br />
