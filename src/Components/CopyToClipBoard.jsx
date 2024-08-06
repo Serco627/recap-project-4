@@ -9,7 +9,7 @@ export default function CopyButton({ color }) {
 
   return (
     <button onClick={handleCopy} className="button">
-      COPY
+      Copy
     </button>
   );
 }

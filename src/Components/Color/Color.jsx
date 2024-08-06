@@ -60,11 +60,11 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
             </>
           ) : (
             <button onClick={handleToggleConfirm} className="button">
-              DELETE
+              Delete
             </button>
           )}
           <button onClick={toggleEditMode} className="button">
-            EDIT
+            Edit
           </button>
         </>
       )}
