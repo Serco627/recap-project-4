@@ -23,12 +23,6 @@ export default function ColorForm({
 
   return (
     <form className="color-form" onSubmit={handleSubmit}>
-      <p className="description">
-        <strong>Create or Edit a Color: </strong>
-        Fill in the details to add a new color or update an existing one.
-        Specify the color’s role, hex value, and contrast text to customize your
-        color theme.
-      </p>
       <br />
       <label htmlFor="role">
         Role:
