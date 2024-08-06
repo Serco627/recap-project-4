@@ -7,5 +7,9 @@ export default function CopyButton({ color }) {
     }
   }
 
-  return <button onClick={handleCopy}>COPY</button>;
+  return (
+    <button onClick={handleCopy} className="button">
+      COPY
+    </button>
+  );
 }

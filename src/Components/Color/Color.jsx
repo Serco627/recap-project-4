@@ -51,13 +51,21 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
           {isConfirmed ? (
             <>
               <p className="color-card-highlight">Really delete?</p>
-              <button onClick={handleToggleConfirm}>CANCEL</button>
-              <button onClick={handleDelete}>DELETE</button>
+              <button onClick={handleToggleConfirm} className="button">
+                CANCEL
+              </button>
+              <button onClick={handleDelete} className="button">
+                DELETE
+              </button>
             </>
           ) : (
-            <button onClick={handleToggleConfirm}>DELETE</button>
+            <button onClick={handleToggleConfirm} className="button">
+              DELETE
+            </button>
           )}
-          <button onClick={toggleEditMode}>EDIT</button>
+          <button onClick={toggleEditMode} className="button">
+            EDIT
+          </button>
         </>
       )}
     </div>
