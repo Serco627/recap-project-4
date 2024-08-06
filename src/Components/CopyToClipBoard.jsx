@@ -1,5 +1,10 @@
+import { useEffect, useState } from "react";
+
 export default function CopyButton({ color }) {
+  const [copied, setCopied] = useState(false);
+
   async function handleCopy() {
+    setCopied(true);
     try {
       await navigator.clipboard.writeText(color.hex);
     } catch (error) {
@@ -7,9 +12,17 @@ export default function CopyButton({ color }) {
     }
   }
 
-  return (
-    <button onClick={handleCopy} className="button">
-      Copy
-    </button>
+  useEffect(() => {
+    if (copied) {
+      console.log("you copied something to your clipboard");
+      const timer = setTimeout(() => setCopied(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [copied]);
+
+  return copied ? (
+    <button>Succesfully copied</button>
+  ) : (
+    <button onClick={handleCopy}>Copy</button>
   );
 }
