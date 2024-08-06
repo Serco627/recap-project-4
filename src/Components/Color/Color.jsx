@@ -45,7 +45,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       ) : (
         <>
           <h3 className="color-card-headline">{color.hex}</h3>
-          <CopyButton />
+          <CopyButton color={color} />
           <h4>{color.role}</h4>
           <p>contrast: {color.contrastText}</p>
           {isConfirmed ? (
