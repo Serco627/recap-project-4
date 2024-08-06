@@ -12,10 +12,7 @@ export default function ColorForm({
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // ID nur generieren, wenn sie nicht existiert (bei neuer Farbe)
-    if (!data.id) {
-      data.id = nanoid();
-    }
+    data.id = initialData.id || nanoid();
 
     onSubmitColor(data);
     event.target.elements.role.focus();
@@ -37,13 +34,17 @@ export default function ColorForm({
       <label htmlFor="hex">
         Hex:
         <br />
-        <ColorInput id="hex" defaultValue={initialData.hex} />
+        <ColorInput id="hex" name="hex" defaultValue={initialData.hex} />
       </label>
       <br />
       <label htmlFor="contrastText">
         Contrast Text:
         <br />
-        <ColorInput id="contrastText" defaultValue={initialData.contrastText} />
+        <ColorInput
+          id="contrastText"
+          name="contrastText"
+          defaultValue={initialData.contrastText}
+        />
       </label>
       <br />
       <br />
