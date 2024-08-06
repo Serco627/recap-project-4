@@ -9,6 +9,10 @@ function App() {
     defaultValue: initialColors,
   });
 
+  function deleteAll() {
+    setColors("");
+  }
+
   const addColor = (newColor) => setColors([newColor, ...colors]);
   const deleteColor = (id) =>
     setColors(colors.filter((color) => color.id !== id));
@@ -23,6 +27,7 @@ function App() {
     <>
       <h1 className="header">Color Theme Creator</h1>
       <ColorForm onSubmitColor={addColor} buttonLabel="Add Color" />
+      <button onClick={deleteAll}>Delete all cards</button>
       {colors.length > 0 ? (
         colors.map((color) => (
           <Color
