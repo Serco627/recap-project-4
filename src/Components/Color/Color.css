@@ -17,9 +17,10 @@
 
 .color-card-highlight {
   display: inline;
-  padding: 2px 6px;
+  padding: 5px;
   background-color: black;
   color: white;
+  border-radius: 10px;
 }
 
 .color-form {
