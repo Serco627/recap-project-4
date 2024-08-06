@@ -7,25 +7,25 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  // Umschalten der Bestätigungsnachricht
   function handleToggleConfirm() {
     setIsConfirmed(!isConfirmed);
   }
 
-  // Bestätigen des Löschvorgangs
   function handleDelete() {
     onDeleteColor(color.id);
   }
 
-  // Umschalten des Editiermodus
   function toggleEditMode() {
     setIsEditing(!isEditing);
   }
 
-  // Bearbeiten einer Farbe
   function handleEdit(newColorData) {
     onEditColor(color.id, newColorData);
-    setIsEditing(false); // Beenden des Editiermodus nach dem Bearbeiten
+    setIsEditing(false);
+  }
+
+  function handleCancelEdit() {
+    setIsEditing(false);
   }
 
   return (
@@ -40,7 +40,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
         <ColorForm
           initialData={color}
           onSubmitColor={handleEdit}
-          buttonLabel="Update Color" // Label für den Bearbeitungsmodus
+          buttonLabel="Update Color"
         />
       ) : (
         <>
@@ -57,8 +57,14 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
           ) : (
             <button onClick={handleToggleConfirm}>Delete</button>
           )}
-          <button onClick={toggleEditMode}>Edit</button>
         </>
+      )}
+      {isEditing ? (
+        <>
+          <button onClick={handleCancelEdit}>Cancel</button>
+        </>
+      ) : (
+        <button onClick={toggleEditMode}>Edit</button>
       )}
     </div>
   );
