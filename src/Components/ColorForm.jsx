@@ -18,6 +18,7 @@ export default function ColorForm({
     }
 
     onSubmitColor(data);
+    event.target.elements.role.focus();
   }
 
   return (
@@ -47,8 +48,6 @@ export default function ColorForm({
       <br />
       <br />
       <button type="submit">{buttonLabel}</button>
-      <br />
-      <br />
     </form>
   );
 }

@@ -1,14 +1,15 @@
 import { useState } from "react";
 import ColorForm from "../ColorForm";
 import "./Color.css";
+import CopyButton from "../CopyToClipBoard";
 
 export default function Color({ color, onDeleteColor, onEditColor }) {
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
   // Umschalten der Bestätigungsnachricht
   function handleToggleConfirm() {
-    setShowConfirm(!showConfirm);
+    setIsConfirmed(!isConfirmed);
   }
 
   // Bestätigen des Löschvorgangs
@@ -44,19 +45,19 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       ) : (
         <>
           <h3 className="color-card-headline">{color.hex}</h3>
+          <CopyButton color={color} />
           <h4>{color.role}</h4>
           <p>contrast: {color.contrastText}</p>
-
-          {showConfirm ? (
+          {isConfirmed ? (
             <>
               <p className="color-card-highlight">Really delete?</p>
-              <button onClick={handleToggleConfirm}>CANCEL</button>
-              <button onClick={handleDelete}>DELETE</button>
+              <button onClick={handleToggleConfirm}>Cancel</button>
+              <button onClick={handleDelete}>Delete</button>
             </>
           ) : (
-            <button onClick={handleToggleConfirm}>DELETE</button>
+            <button onClick={handleToggleConfirm}>Delete</button>
           )}
-          <button onClick={toggleEditMode}>EDIT</button>
+          <button onClick={toggleEditMode}>Edit</button>
         </>
       )}
     </div>
