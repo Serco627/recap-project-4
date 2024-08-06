@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ColorForm from "../ColorForm";
 import "./Color.css";
+import CopyButton from "../CopyToClipBoard";
 
 export default function Color({ color, onDeleteColor, onEditColor }) {
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -44,9 +45,9 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       ) : (
         <>
           <h3 className="color-card-headline">{color.hex}</h3>
+          <CopyButton />
           <h4>{color.role}</h4>
           <p>contrast: {color.contrastText}</p>
-
           {isConfirmed ? (
             <>
               <p className="color-card-highlight">Really delete?</p>
