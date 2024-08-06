@@ -3,12 +3,12 @@ import ColorForm from "../ColorForm";
 import "./Color.css";
 
 export default function Color({ color, onDeleteColor, onEditColor }) {
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [isConfirmed, setIsConfirmed] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
   // Umschalten der Bestätigungsnachricht
   function handleToggleConfirm() {
-    setShowConfirm(!showConfirm);
+    setIsConfirmed(!isConfirmed);
   }
 
   // Bestätigen des Löschvorgangs
@@ -47,7 +47,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
           <h4>{color.role}</h4>
           <p>contrast: {color.contrastText}</p>
 
-          {showConfirm ? (
+          {isConfirmed ? (
             <>
               <p className="color-card-highlight">Really delete?</p>
               <button onClick={handleToggleConfirm}>CANCEL</button>
