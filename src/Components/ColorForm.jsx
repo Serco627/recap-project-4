@@ -18,6 +18,7 @@ export default function ColorForm({
     }
 
     onSubmitColor(data);
+    event.target.elements.role.focus();
   }
 
   return (
